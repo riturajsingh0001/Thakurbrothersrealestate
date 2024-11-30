@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thakur Brothers Real Estate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            max-height: 400px;
+            border: 1px solid #ccc;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .chat-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Thakur Brothers Real Estate</h1>
+            <div>
+                <a href="#home" class="mx-2 hover:text-blue-200">Home</a>
+                <a href="#buy-land" class="mx-2 hover:text-blue-200">Buy Land</a>
+                <a href="#buy-apartments" class="mx-2 hover:text-blue-200">Buy Apartments</a>
+                <a href="#rentals" class="mx-2 hover:text-blue-200">Rentals</a>
+                <a href="#investors" class="mx-2 hover:text-blue-200">Investors</a>
+                <a href="#brokers" class="mx-2 hover:text-blue-200">Brokers</a>
+            </div>
+        </div>
+    </nav>
+
+     <!-- Home Page -->
+     <div x-show="currentPage === 'home'" class="container mx-auto p-8">
+        <h2 class="text-4xl font-bold mb-6 text-center">Thakur Brothers Real Estate Pvt Ltd</h2>
+        <p class="text-lg text-gray-700 leading-relaxed text-center">
+            Welcome to Thakur Brothers Real Estate, a premier real estate company dedicated to transforming dreams into reality. With over two decades of experience, we have established ourselves as a trusted name in property development, investment, and management. Our mission is to provide exceptional real estate solutions that combine quality, transparency, and customer satisfaction.
+
+            We understand that buying or investing in real estate is more than just a transaction—it's about creating a future, securing an investment, and finding a place to call home. Our team of experienced professionals works tirelessly to offer comprehensive services including land acquisition, apartment sales, rental management, and strategic investment opportunities.
+
+            At Thakur Brothers, we pride ourselves on our integrity, market expertise, and commitment to client success. Whether you're a first-time homebuyer, a seasoned investor, or looking for the perfect rental property, we are here to guide you every step of the way.
+        </p>
+    </div>
+</nav>
+    <!-- Buy Land Section -->
+    <section id="buy-land" class="container mx-auto mt-10 hidden">
+        <h2 class="text-3xl font-bold mb-6">Land Locations</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Mumbai, Maharashtra</h3>
+                <img src="/api/placeholder/400/250" alt="Mumbai Land" class="w-full mb-4">
+                <p>Prime location near suburban development. Ideal for residential and commercial projects.</p>
+                <p class="font-bold text-green-600">Price: ₹2.5 Crore per acre</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Bengaluru, Karnataka</h3>
+                <img src="/api/placeholder/400/250" alt="Bengaluru Land" class="w-full mb-4">
+                <p>Tech corridor location with high appreciation potential.</p>
+                <p class="font-bold text-green-600">Price: ₹1.8 Crore per acre</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Varanasi, Uttar Pradesh</h3>
+                <img src="/api/placeholder/400/250" alt="Varanasi Land" class="w-full mb-4">
+                <p>Historic location with cultural significance and growing real estate market.</p>
+                <p class="font-bold text-green-600">Price: ₹75 Lakh per acre</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Dehradun, Uttarakhand</h3>
+                <img src="/api/placeholder/400/250" alt="Dehradun Land" class="w-full mb-4">
+                <p>Scenic location near hills with excellent tourism potential.</p>
+                <p class="font-bold text-green-600">Price: ₹1.2 Crore per acre</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy Apartments Section -->
+    <section id="buy-apartments" class="container mx-auto mt-10 hidden">
+        <h2 class="text-3xl font-bold mb-6">Apartment Locations</h2>
+        <!-- Similar structure to Buy Land section with apartment details -->
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Mumbai, Maharashtra</h3>
+                <img src="/api/placeholder/400/250" alt="Mumbai Apartment" class="w-full mb-4">
+                <p>Luxury 3BHK apartments in prime suburban location.</p>
+                <p class="font-bold text-green-600">Price: ₹2.5 Crore</p>
+            </div>
+            <!-- Similar cards for other locations -->
+        </div>
+    </section>
+
+    <!-- Rentals Section -->
+    <section id="rentals" class="container mx-auto mt-10 hidden">
+        <h2 class="text-3xl font-bold mb-6">Rental Houses</h2>
+        <!-- Similar structure to Buy Land section with rental details -->
+    </section>
+
+    <!-- Investors Section -->
+    <section id="investors" class="container mx-auto mt-10 hidden">
+        <h2 class="text-3xl font-bold mb-6">Real Estate Investment Partnership</h2>
+        <div class="bg-white p-8 rounded-lg shadow-md">
+            <p class="mb-4">At Thakur Brothers Real Estate, we believe in transparency, trust, and mutual growth. Our investment partnership program offers:</p>
+            <ul class="list-disc pl-6 mb-4">
+                <li>Guaranteed minimum 12% annual returns</li>
+                <li>Quarterly financial reports</li>
+                <li>Complete legal documentation</li>
+                <li>Flexible investment options</li>
+            </ul>
+            <form class="bg-gray-100 p-6 rounded">
+                <h3 class="text-xl font-semibold mb-4">Investment Inquiry</h3>
+                <input type="text" placeholder="Name" class="w-full mb-2 p-2 border rounded">
+                <input type="email" placeholder="Email" class="w-full mb-2 p-2 border rounded">
+                <input type="tel" placeholder="Phone" class="w-full mb-2 p-2 border rounded">
+                <textarea placeholder="Investment Amount and Queries" class="w-full mb-2 p-2 border rounded"></textarea>
+                <button class="bg-blue-600 text-white p-2 rounded">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Brokers Section -->
+    <section id="brokers" class="container mx-auto mt-10 hidden">
+        <h2 class="text-3xl font-bold mb-6">Our Trusted Brokers</h2>
+        <div class="grid grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold">Rajesh Thakur</h3>
+                <p>Senior Broker</p>
+                <p>Email: rajesh.thakur@thakurbrothers.com</p>
+                <p>Phone: +91 9876543210</p>
+            </div>
+            <!-- More broker cards -->
+        </div>
+    </section>
+
+    <!-- AI Chatbot -->
+    <div id="chat-container" class="chat-popup">
+        <div class="chat-messages" id="chat-messages"></div>
+        <div class="p-2">
+            <input type="text" id="user-input" class="w-full p-2 border rounded" placeholder="Ask a question...">
+            <button onclick="sendMessage()" class="bg-blue-600 text-white p-2 rounded mt-2">Send</button>
+        </div>
+    </div>
+    <button onclick="toggleChat()" class="fixed bottom-4 right-4 bg-blue-600 text-white p-3 rounded-full">💬</button>
+
+    <!-- Footer -->
+    <footer class="bg-blue-800 text-white p-6 mt-10">
+        <div class="container mx-auto text-center">
+            <p>Contact us: Thakurbrothersrealestate9777@gmail.com</p>
+            <p>Phone: +91 1234567890</p>
+            <p>© 2024 Thakur Brothers Real Estate Pvt Ltd</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1);
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                document.getElementById(sectionId).classList.remove('hidden');
+            });
+        });
+
+        // Chatbot functionality
+        let chatMessages = [];
+
+        function toggleChat() {
+            const chatPopup = document.getElementById('chat-container');
+            chatPopup.style.display = chatPopup.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const messagesContainer = document.getElementById('chat-messages');
+
+            if (userInput.value.trim() === '') return;
+
+            // Add user message
+            messagesContainer.innerHTML += `
+                <div class="text-right mb-2">
+                    <p class="bg-blue-100 inline-block p-2 rounded">${userInput.value}</p>
+                </div>
+            `;
+
+            // Simulate AI response (replace with actual AI logic)
+            messagesContainer.innerHTML += `
+                <div class="text-left mb-2">
+                    <p class="bg-gray-200 inline-block p-2 rounded">Thank you for your query. Our AI is processing your request.</p>
+                </div>
+            `;
+
+            userInput.value = '';
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>
